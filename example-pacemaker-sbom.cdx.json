@@ -1,0 +1,218 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:3f6b2c1e-8a4d-4f0e-9b7a-2d5c8e1f4a90",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-15T15:00:00Z",
+    "lifecycles": [{ "phase": "build" }],
+    "tools": {
+      "components": [
+        { "type": "application", "name": "example-sbom-generator", "version": "2.4.1" }
+      ]
+    },
+    "authors": [
+      { "name": "Product Security Team", "email": "psirt@example-medical.invalid" }
+    ],
+    "manufacturer": {
+      "name": "Example Medical Inc. (FICTIONAL)",
+      "url": ["https://example-medical.invalid"]
+    },
+    "component": {
+      "type": "firmware",
+      "bom-ref": "device-fw",
+      "name": "CardioPace X2 Implantable Pulse Generator Firmware",
+      "version": "4.2.0",
+      "description": "Dual-chamber rate-responsive pacemaker firmware with MICS-band and Bluetooth Low Energy telemetry. FICTIONAL EXAMPLE FOR ILLUSTRATION ONLY.",
+      "supplier": { "name": "Example Medical Inc. (FICTIONAL)" },
+      "hashes": [
+        { "alg": "SHA-256", "content": "0000000000000000000000000000000000000000000000000000000000000001" }
+      ],
+      "properties": [
+        { "name": "medical:device:model", "value": "CPX2-DR" },
+        { "name": "medical:device:class", "value": "FDA Class III (PMA)" },
+        { "name": "medical:device:hardware-platform", "value": "ARM Cortex-M0+ ultra-low-power MCU" },
+        { "name": "medical:fda:cyber-device", "value": "true" }
+      ]
+    },
+    "supplier": { "name": "Example Medical Inc. (FICTIONAL)" },
+    "licenses": [{ "license": { "id": "CC0-1.0" } }]
+  },
+
+  "components": [
+    {
+      "type": "firmware",
+      "bom-ref": "bootloader",
+      "name": "CardioPace Secure Bootloader",
+      "version": "1.8.3",
+      "supplier": { "name": "Example Medical Inc. (FICTIONAL)" },
+      "description": "Proprietary first-stage bootloader; verifies firmware image signature before execution.",
+      "licenses": [{ "license": { "name": "Proprietary" } }],
+      "hashes": [{ "alg": "SHA-256", "content": "0000000000000000000000000000000000000000000000000000000000000002" }],
+      "properties": [
+        { "name": "medical:support-level", "value": "Actively maintained" },
+        { "name": "medical:end-of-support", "value": "2038-12-31" }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pacing-core",
+      "name": "Pacing Therapy Engine",
+      "version": "4.2.0",
+      "supplier": { "name": "Example Medical Inc. (FICTIONAL)" },
+      "description": "Proprietary pacing algorithms: DDD/DDDR/VVI modes, rate response, mode switching, capture management.",
+      "licenses": [{ "license": { "name": "Proprietary" } }],
+      "hashes": [{ "alg": "SHA-256", "content": "0000000000000000000000000000000000000000000000000000000000000003" }],
+      "properties": [
+        { "name": "medical:safety-classification", "value": "IEC 62304 Class C" },
+        { "name": "medical:support-level", "value": "Actively maintained" },
+        { "name": "medical:end-of-support", "value": "2038-12-31" }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "telemetry-mics",
+      "name": "MICS Telemetry Stack",
+      "version": "3.1.7",
+      "supplier": { "name": "Example Medical Inc. (FICTIONAL)" },
+      "description": "Proprietary 402-405 MHz Medical Implant Communication Service protocol stack for clinician programmer and bedside monitor sessions.",
+      "licenses": [{ "license": { "name": "Proprietary" } }],
+      "hashes": [{ "alg": "SHA-256", "content": "0000000000000000000000000000000000000000000000000000000000000004" }],
+      "properties": [
+        { "name": "medical:support-level", "value": "Actively maintained" },
+        { "name": "medical:end-of-support", "value": "2038-12-31" }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "ble-stack",
+      "name": "BLE Controller and Host Stack",
+      "version": "5.3.2",
+      "supplier": { "name": "Example Radio Silicon Ltd. (FICTIONAL)" },
+      "description": "Third-party (OTS) Bluetooth Low Energy stack supplied in binary form by the radio chip vendor; used for patient smartphone app connectivity.",
+      "licenses": [{ "license": { "name": "Vendor commercial license" } }],
+      "cpe": "cpe:2.3:a:example_radio_silicon:ble_stack:5.3.2:*:*:*:*:*:*:*",
+      "hashes": [{ "alg": "SHA-256", "content": "0000000000000000000000000000000000000000000000000000000000000005" }],
+      "properties": [
+        { "name": "medical:software-category", "value": "OTS (off-the-shelf), binary only" },
+        { "name": "medical:support-level", "value": "Supported by supplier" },
+        { "name": "medical:end-of-support", "value": "2031-06-30" }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "freertos-kernel",
+      "name": "FreeRTOS-Kernel",
+      "version": "10.6.2",
+      "supplier": { "name": "Amazon Web Services" },
+      "description": "Real-time operating system kernel (task scheduling, timers, queues).",
+      "licenses": [{ "license": { "id": "MIT" } }],
+      "purl": "pkg:github/FreeRTOS/FreeRTOS-Kernel@V10.6.2",
+      "externalReferences": [
+        { "type": "vcs", "url": "https://github.com/FreeRTOS/FreeRTOS-Kernel" }
+      ],
+      "hashes": [{ "alg": "SHA-256", "content": "0000000000000000000000000000000000000000000000000000000000000006" }],
+      "properties": [
+        { "name": "medical:software-category", "value": "SOUP / open source" },
+        { "name": "medical:support-level", "value": "Community supported; manufacturer monitors for vulnerabilities" },
+        { "name": "medical:end-of-support", "value": "Unknown (community project)" }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "mbedtls",
+      "name": "Mbed TLS",
+      "version": "3.6.0",
+      "supplier": { "name": "Trusted Firmware Project" },
+      "description": "Cryptographic library used for firmware signature verification (ECDSA P-256) and session encryption (AES-CCM).",
+      "licenses": [{ "license": { "id": "Apache-2.0" } }],
+      "purl": "pkg:github/Mbed-TLS/mbedtls@v3.6.0",
+      "cpe": "cpe:2.3:a:arm:mbed_tls:3.6.0:*:*:*:*:*:*:*",
+      "externalReferences": [
+        { "type": "vcs", "url": "https://github.com/Mbed-TLS/mbedtls" }
+      ],
+      "hashes": [{ "alg": "SHA-256", "content": "0000000000000000000000000000000000000000000000000000000000000007" }],
+      "properties": [
+        { "name": "medical:software-category", "value": "SOUP / open source" },
+        { "name": "medical:build-config", "value": "Only crypto modules compiled; TLS/X.509 modules excluded" },
+        { "name": "medical:support-level", "value": "LTS branch" },
+        { "name": "medical:end-of-support", "value": "2027-03-31" }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "cmsis-core",
+      "name": "CMSIS-Core (Cortex-M)",
+      "version": "5.9.0",
+      "supplier": { "name": "Arm Limited" },
+      "description": "Hardware abstraction headers for the ARM Cortex-M processor.",
+      "licenses": [{ "license": { "id": "Apache-2.0" } }],
+      "purl": "pkg:github/ARM-software/CMSIS_5@5.9.0",
+      "hashes": [{ "alg": "SHA-256", "content": "0000000000000000000000000000000000000000000000000000000000000008" }],
+      "properties": [
+        { "name": "medical:software-category", "value": "SOUP / open source" },
+        { "name": "medical:support-level", "value": "Maintained by supplier" },
+        { "name": "medical:end-of-support", "value": "Unknown" }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "newlib-nano",
+      "name": "newlib-nano",
+      "version": "4.3.0",
+      "supplier": { "name": "Red Hat / Sourceware" },
+      "description": "Size-optimized C standard library linked into firmware.",
+      "licenses": [{ "expression": "BSD-3-Clause AND MIT" }],
+      "purl": "pkg:generic/newlib@4.3.0",
+      "hashes": [{ "alg": "SHA-256", "content": "0000000000000000000000000000000000000000000000000000000000000009" }],
+      "properties": [
+        { "name": "medical:software-category", "value": "SOUP / open source" },
+        { "name": "medical:support-level", "value": "Community supported" },
+        { "name": "medical:end-of-support", "value": "Unknown" }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "hal-mcu",
+      "name": "MCU Peripheral HAL",
+      "version": "2.11.0",
+      "supplier": { "name": "Example Semiconductor Corp. (FICTIONAL)" },
+      "description": "Chip vendor's hardware abstraction layer (ADC for sensing, timers, low-power modes).",
+      "licenses": [{ "license": { "id": "BSD-3-Clause" } }],
+      "hashes": [{ "alg": "SHA-256", "content": "000000000000000000000000000000000000000000000000000000000000000a" }],
+      "properties": [
+        { "name": "medical:software-category", "value": "OTS (vendor supplied source)" },
+        { "name": "medical:support-level", "value": "Supported by supplier" },
+        { "name": "medical:end-of-support", "value": "2030-12-31" }
+      ]
+    }
+  ],
+
+  "dependencies": [
+    { "ref": "device-fw", "dependsOn": ["bootloader", "pacing-core", "telemetry-mics", "ble-stack", "freertos-kernel", "mbedtls", "cmsis-core", "newlib-nano", "hal-mcu"] },
+    { "ref": "bootloader", "dependsOn": ["mbedtls", "cmsis-core", "hal-mcu"] },
+    { "ref": "pacing-core", "dependsOn": ["freertos-kernel", "hal-mcu"] },
+    { "ref": "telemetry-mics", "dependsOn": ["mbedtls", "freertos-kernel", "hal-mcu"] },
+    { "ref": "ble-stack", "dependsOn": ["mbedtls", "hal-mcu"] },
+    { "ref": "freertos-kernel", "dependsOn": ["cmsis-core"] },
+    { "ref": "mbedtls", "dependsOn": ["newlib-nano"] },
+    { "ref": "hal-mcu", "dependsOn": ["cmsis-core"] },
+    { "ref": "cmsis-core", "dependsOn": [] },
+    { "ref": "newlib-nano", "dependsOn": [] }
+  ],
+
+  "vulnerabilities": [
+    {
+      "bom-ref": "vex-001",
+      "id": "EXAMPLE-VULN-0001",
+      "source": { "name": "Placeholder ID (fictional; a real SBOM would cite a CVE)" },
+      "description": "Hypothetical flaw in Mbed TLS X.509 certificate parsing.",
+      "affects": [{ "ref": "mbedtls" }],
+      "analysis": {
+        "state": "not_affected",
+        "justification": "code_not_present",
+        "detail": "The X.509 module is excluded from the firmware build configuration, so the vulnerable code is not compiled into the device."
+      }
+    }
+  ]
+}
